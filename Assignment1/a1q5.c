@@ -56,28 +56,26 @@ int main()
         scanf("%u", &a[i]);
     }
 
-    bub_sort(a,size);
+    bub_sort(a, size);
     printf("Sorted array would be: ");
-    for(int i=0;i<size;++i)
+    for (int i = 0; i < size; ++i)
     {
-        printf("%u ",a[i]);
+        printf("%u ", a[i]);
     }
 
     printf("\n\nEnter key to be searched: ");
-    scanf("%u",&key);
+    scanf("%u", &key);
 
-    int val=binary_search(a,size,key);
+    int val = binary_search(a, size, key);
 
-    if(val==-1)
+    if (val == -1)
     {
         printf("Key does not exist in array");
     }
     else
     {
-        printf("Key found sucessfully in array at position %d of sorted array",val+1);
+        printf("Key found sucessfully in array at position %d of sorted array", val + 1);
     }
-
-    
 
     return 0;
 }
