@@ -27,7 +27,7 @@ int main()
 {
     // type is an array of function pointers
     void (*type[])(int, int) = {&addition, &subtraction, &division, &multiplication, &exponentiation};
-    unsigned int choice;
+    int choice;
 
     int a, b;
     printf("Enter values for num1 and num2: ");
@@ -37,7 +37,7 @@ int main()
     printf("Enter your choice(0-4): ");
     scanf("%d", &choice);
 
-    if (choice > 4)
+    if (choice <0 || choice > 4)
         printf("\nInvalid choice");
 
     (*type[choice])(a, b);

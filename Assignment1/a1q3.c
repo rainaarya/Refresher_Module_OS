@@ -74,5 +74,7 @@ int main()
         printf("%d ", a2[i]);
     }
 
+    printf("\n");
+
     return 0;
 }

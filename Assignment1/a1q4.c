@@ -22,9 +22,9 @@ void reverse(char str[])
 int main()
 {
 
-    char str[101];
+    char str[102];
     printf("Enter the string (Max 100 characters): ");
-    fgets(str, sizeof(str) + 1, stdin);
+    fgets(str, sizeof(str), stdin);
     printf("\nThe string before reversal: ");
     printf("%s", str);
     reverse(str);
