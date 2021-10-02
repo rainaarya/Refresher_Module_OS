@@ -31,14 +31,17 @@ int main()
 
     int a, b;
     printf("Enter values for num1 and num2: ");
-    scanf("%d %d",&a,&b);
+    scanf("%d %d", &a, &b);
 
     printf("\n0:To Add\n1:To Subtract\n2:To Divide\n3:To Multiply\n4:For Exponentiation \n");
     printf("Enter your choice(0-4): ");
     scanf("%d", &choice);
 
-    if (choice <0 || choice > 4)
-        printf("\nInvalid choice");
+    if (choice < 0 || choice > 4)
+    {
+        printf("\nInvalid choice\n");
+        return 0;
+    }
 
     (*type[choice])(a, b);
 
