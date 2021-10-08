@@ -1,8 +1,8 @@
-// C program for Balanced BST
+//Height Balanced BST
 #include <stdio.h>
 #include <stdlib.h>
 
-// An AVL tree node
+// Implementation using AVL tree
 struct Node
 {
     int val;
@@ -11,22 +11,19 @@ struct Node
     int height;
 };
 
-/* Given a non-empty binary search tree, return the
-node with minimum val value found in that tree.
-Note that the entire tree does not need to be
-searched. */
+// Function to find minimum Node
 struct Node *minNode(struct Node *node)
 {
     struct Node *temp = node;
 
-    /* loop down to find the leftmost leaf */
+    // loop to find the leftmost node
     while (temp->left != NULL)
         temp = temp->left;
 
     return temp;
 }
 
-// A utility function to get height of the tree
+// Function to get height of tree
 int height(struct Node *root)
 {
     if (root == NULL)
@@ -37,7 +34,7 @@ int height(struct Node *root)
     }
 }
 
-// A utility function to get maximum of two integers
+// Function to find maximum
 int maximum(int a, int b)
 {
     if (a > b)
@@ -46,57 +43,56 @@ int maximum(int a, int b)
         return b;
 }
 
-/* Helper function that allocates a new node with the given val and
-	NULL left and right pointers. */
+// Function that initialises a new Node
 struct Node *newNode(int val)
 {
     struct Node *node = (struct Node *)malloc(sizeof(struct Node));
     node->val = val;
     node->left = NULL;
     node->right = NULL;
-    node->height = 1; // new node is initially added at leaf
+    node->height = 1; // the new node is initially added at leaf
     return node;
 }
 
-// A utility function to right rotate subtree rooted with y
-// See the diagram given above.
+// Function to right rotate subtree rooted with root
+
 struct Node *rightRotate(struct Node *root)
 {
     struct Node *temp1 = root->left;
     struct Node *temp2 = temp1->right;
 
-    // Perform rotation
+    // First, Perform rotation
     temp1->right = root;
     root->left = temp2;
 
-    // Update heights
+    //After that, we need to Update the heights
     root->height = maximum(height(root->left), height(root->right)) + 1;
     temp1->height = maximum(height(temp1->left), height(temp1->right)) + 1;
 
-    // Return new root
+    //Finally, return the new root
     return temp1;
 }
 
-// A utility function to left rotate subtree rooted with x
-// See the diagram given above.
+// Function to left rotate subtree rooted with root
+
 struct Node *leftRotate(struct Node *root)
 {
     struct Node *temp1 = root->right;
     struct Node *temp2 = temp1->left;
 
-    // Perform rotation
+    // First, Perform rotation
     temp1->left = root;
     root->right = temp2;
 
-    // Update heights
+    //After that, we need to Update the heights
     root->height = maximum(height(root->left), height(root->right)) + 1;
     temp1->height = maximum(height(temp1->left), height(temp1->right)) + 1;
 
-    // Return new root
+    //Finally, return the new root
     return temp1;
 }
 
-// Get Balance factor of node N
+// Function to get BF(Balance factor) of node root
 int balfactor(struct Node *root)
 {
     if (root == NULL)
@@ -104,28 +100,28 @@ int balfactor(struct Node *root)
     return height(root->left) - height(root->right);
 }
 
+//Function to insert in the AVL TREE
 struct Node *insert(struct Node *node, int val)
 {
-    /* 1. Perform the normal BST rotation */
+    //First, Perform the normal insertion of BST
     if (node == NULL)
         return newNode(val);
 
+    // If val<node's val, then val is in left subtree
     if (val < node->val)
         node->left = insert(node->left, val);
+    
+    // If val>node's val, then val is in right subtree
     else if (val > node->val)
         node->right = insert(node->right, val);
-    else // Equal keys not allowed
+    else
         return node;
 
-    /* 2. Update height of this ancestor node */
+    // Then we need to update height of ancestor node
     node->height = maximum(height(node->left), height(node->right)) + 1;
 
-    /* 3. Get the balance factor of this ancestor
-		node to check whether this node became
-		unbalanced */
+    // Get the balance factor
     int balance = balfactor(node);
-
-    // If this node becomes unbalanced, then there are 4 cases
 
     // Left Left Case
     if (balance > 1 && val < node->left->val)
@@ -149,37 +145,29 @@ struct Node *insert(struct Node *node, int val)
         return leftRotate(node);
     }
 
-    /* return the (unchanged) node pointer */
     return node;
 }
 
-
-
-// Recursive function to delete a node with given val
-// from subtree with given root. It returns root of
-// the modified subtree.
-struct Node *delete(struct Node *root, int val)
+// Function to delete a node
+struct Node *delete (struct Node *root, int val)
 {
-    // STEP 1: PERFORM STANDARD BST DELETE
+    // First, perform normal BST deletion
 
     if (root == NULL)
         return root;
 
-    // If the val to be deleted is smaller than the
-    // root's val, then it lies in left subtree
+    // If val<root's val, then val is in left subtree
     if (val < root->val)
-        root->left = delete(root->left, val);
+        root->left = delete (root->left, val);
 
-    // If the val to be deleted is greater than the
-    // root's val, then it lies in right subtree
+    // If val>root's val, then val is in right subtree
     else if (val > root->val)
-        root->right = delete(root->right, val);
+        root->right = delete (root->right, val);
 
-    // if val is same as root's val, then This is
-    // the node to be deleted
+    //otherwise, delete this node
     else
     {
-        // If the node is with only one child or no child
+        // If node has one child or no child
         if (root->left == NULL)
         {
             struct Node *temp = root->right;
@@ -195,29 +183,25 @@ struct Node *delete(struct Node *root, int val)
 
         else
         {
-            // If the node has two children
+            // If the node has two children then do this
             struct Node *temp = minNode(root->right);
 
-            // Place the inorder successor in position of the node to be deleted
+            // Put inorder successor in position of the node which is to be deleted
             root->val = temp->val;
 
-            // Delete the inorder successor
-            root->right = delete(root->right, temp->val);
+            // Remove inorder successor
+            root->right = delete (root->right, temp->val);
         }
     }
 
-    // If the tree had only one node then return
     if (root == NULL)
         return root;
 
-    // STEP 2: UPDATE HEIGHT OF THE CURRENT NODE
+    // After this, we need to update height of node (current one)
     root->height = maximum(height(root->left), height(root->right)) + 1;
 
-    // STEP 3: GET THE BALANCE FACTOR OF THIS NODE (to
-    // check whether this node became unbalanced)
+    // Then, get the balance factor
     int balance = balfactor(root);
-
-    // If this node becomes unbalanced, then there are 4 cases
 
     // Left Left Case
     if (balance > 1 && balfactor(root->left) >= 0)
@@ -244,9 +228,7 @@ struct Node *delete(struct Node *root, int val)
     return root;
 }
 
-// A utility function to print preorder traversal of
-// the tree.
-// The function also prints height of every node
+// Function to print preorder traversal of Height Balacned BST
 void preOrder(struct Node *root)
 {
     if (root != NULL)
@@ -257,14 +239,13 @@ void preOrder(struct Node *root)
     }
 }
 
-/* Driver program to test above function*/
 int main()
 {
     struct Node *root = NULL;
     int choice;
     char ch = 'y';
 
-    while (ch == 'y' || ch == 'Y')
+    while (ch == 'y' || ch == 'Y') //menu driven program
     {
         printf("\n\t\t\tHeight Balanced Binary Search Tree:");
         printf("\nEnter Your Choice\n1) Insertion\n2) Deletion\n3) Display Preorder Traversal\n");
@@ -277,19 +258,19 @@ int main()
             int value;
             printf("\nEnter value to be Inserted in Height Balacned BST: ");
             scanf("%d", &value);
-            root = insert(root, value);
+            root = insert(root, value); //insert value into Height Balanced BST and assign retuned node to root
             printf("Value has been Inserted!");
             break;
         case 2:
             printf("\nEnter value to be Deleted in BST: ");
             scanf("%d", &value);
-            root = delete(root, value);
+            root = delete (root, value); //insert value from Height Balanced BST and assign retuned node to root
             printf("Value has been Deleted! (if it existed)");
             break;
 
         case 3:
             printf("\nPreorder traversal of Height Balanced BST currently: ");
-            preOrder(root);
+            preOrder(root); //print pre-order traversal
             break;
 
         default:

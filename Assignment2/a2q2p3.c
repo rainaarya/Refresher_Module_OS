@@ -1,47 +1,47 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-struct Node
+struct Node  //stack as a linked list
 {
     int val;
     struct Node *next;
 };
 
-struct Node *top = NULL;
+struct Node *top = NULL; //initially, stack top is NULL
 
 void push(int value)
 {
-    struct Node *tempNode;
-    tempNode = (struct Node *)malloc(sizeof(struct Node));
+    struct Node *tempNode;  //declare tempNode pointer of type Node
+    tempNode = (struct Node *)malloc(sizeof(struct Node));  //allocate memory for the tempNode
 
-    if (top == NULL)
+    if (top == NULL)      //if the stack is empty
     {
-        tempNode->val = value;
-        tempNode->next = NULL;
+        tempNode->val = value; //assign value in the tempNode
+        tempNode->next = NULL; //the next of tempNode is null (since there is only one element in stack)
     }
-    else
+    else //otherwise
     {
-        tempNode->val = value;
-        tempNode->next = top;
+        tempNode->val = value;  //assign value in the tempNode
+        tempNode->next = top;   //the next of tempNode is the top node (the previous node below it)
     }
-    top = tempNode;
+    top = tempNode; //assign the new top node as the tempNode
     printf("\nThe element has been inserted!\n");
 }
 void pop()
 {
-    if (top == NULL)
+    if (top == NULL) //if stack is empty
         printf("\nThe Stack is Empty. Underflow!\n");
     else
     {
-        struct Node *temp = top;
-        printf("\nThe element that was deleted is: %d", temp->val);
-        top = temp->next;
-        free(temp);
+        struct Node *temp = top;   
+        printf("\nThe element that was deleted is: %d", temp->val); //output node that will be deleted
+        top = temp->next;     //change top to next node of temp (popping)
+        free(temp);           // free memory of temp node as it is no longer needed
     }
 }
 void display()
 {
-    if (top == NULL)
+    if (top == NULL)  //if stack is empty
         printf("\nThe Stack is Empty\n");
     else
     {
@@ -49,7 +49,7 @@ void display()
         struct Node *temp = top;
         int i = 1;
 
-        while (temp->next != NULL)
+        while (temp->next != NULL)  // loop till the last element in stack
         {
             if (i == 1)
             {
@@ -59,7 +59,7 @@ void display()
             {
                 printf("%d --> ", temp->val);
             }
-            temp = temp->next;
+            temp = temp->next;     //assign temp to next element in the stack
             i++;
         }
         if (i == 1)
@@ -75,7 +75,7 @@ void main()
     char ch = 'y';
 
     printf("\n\t\tStack using Linked List\n");
-    while (ch == 'y' || ch == 'Y')
+    while (ch == 'y' || ch == 'Y') //menu driven program
     {
         printf("\n\t\tSelect from following options\n");
         printf("1. Push\n2. Pop\n3. Display");
@@ -87,14 +87,14 @@ void main()
             printf("Enter the value to insert in stack: ");
             int value;
             scanf("%d", &value);
-            push(value);
+            push(value); //push the value
             break;
         case 2:
-            pop();
+            pop();   //pop from stack
             break;
         case 3:
 
-            display();
+            display();  //display current stack state
             break;
 
         default:

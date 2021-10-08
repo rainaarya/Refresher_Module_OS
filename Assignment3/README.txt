@@ -21,7 +21,7 @@ To clean/delete all generated executables, type 'make clean' in the terminal.
 This question is a shell script and can be run by typing ./a3q1.sh in the bash terminal. It generates the calender of the month in the date.
 First, give it permission to execute by running 'chmod +x a3q1.sh'
 
-To test this program, run the shell script by providing three command line arguments representing the date in the form 'dd mm yyyy'.
+To test this program, run the shell script by providing three command line arguments representing the date in the form (space seperated) 'dd mm yyyy'.
 For example, to run the script with the date 25/10/2004, type: ./a3q1.sh 25 10 2004
 
 The output is the calender of the month and year if the date is valid. If date is invalid, error is printed.
@@ -30,6 +30,8 @@ The output is the calender of the month and year if the date is valid. If date i
 
 This question is a shell script and can be run by typing ./a3q2.sh in the bash terminal.
 First, give it permission to execute by running 'chmod +x a3q2.sh'
+
+ASSUMPTION: I have taken exp() to be calculated from left to right. So for example, './a3q2.sh exp 2 3 2' gives output 64
 
 To test this program, run the shell script by providing the first argument as the name of the arithmetic operation, followed by
 any number of subsequent arguments to represent the operands.

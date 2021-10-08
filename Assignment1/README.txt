@@ -55,7 +55,8 @@ The C file name for the same is 'a1q5.c' and the executable file name is 'a1q5'
 
 To test the program: Run a1q5 and enter the size of array, followed by the array elements. Since the question
 says to assume 4294967290, 4294967295, 10400 are part of the array, the input entered should contain these values too.
-After the program displays the sorted array, enter the element key you wish to search for. In case of sucess, the 
+
+After the program displays the sorted array, enter the element key you wish to search for. In case of success, the 
 program outputs that the element is found and the position of element in sorted array is printed. In case of 
 faliure, the program prints the message that the key does not exist.
 

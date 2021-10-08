@@ -47,7 +47,7 @@ int main()
 
     printf("Enter size of array: ");
     scanf("%d", &size);
-    unsigned int a[size];
+    unsigned int a[size]; // to declare an array of unsigned integers
     unsigned int key;
 
     printf("\nEnter array elements: ");
@@ -56,7 +56,7 @@ int main()
         scanf("%u", &a[i]);
     }
 
-    bub_sort(a, size);
+    bub_sort(a, size); // to sort the elements before binary search
     printf("Sorted array would be: ");
     for (int i = 0; i < size; ++i)
     {

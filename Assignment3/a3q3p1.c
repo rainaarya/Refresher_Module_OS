@@ -7,11 +7,11 @@ struct node
     struct node *left, *right;
 };
 
-// Insert a node
+// To Insert node
 struct node *insert(struct node *node, int val)
 {
-    // Return a new node if the tree is empty
-    if (node == NULL) // Create a node
+    // Return a new node when tree is empty
+    if (node == NULL) // Create node
     {
         struct node *temp = (struct node *)malloc(sizeof(struct node));
         temp->val = val;
@@ -20,7 +20,7 @@ struct node *insert(struct node *node, int val)
         return temp;
     }
 
-    // Traverse to the right place and insert the node
+    // Insert the node
     if (val < node->val)
         node->left = insert(node->left, val);
     else
@@ -29,12 +29,12 @@ struct node *insert(struct node *node, int val)
     return node;
 }
 
-// Find the inorder successor
+// To Find inorder successor
 struct node *minNode(struct node *node)
 {
     struct node *current = node;
 
-    // Find the leftmost leaf
+    // Find leftmost node
     while (current->left != NULL)
         current = current->left;
 
@@ -44,11 +44,11 @@ struct node *minNode(struct node *node)
 // Deleting a node
 struct node *deleteNode(struct node *root, int val)
 {
-    // Return if the tree is empty
+    // Return NULL if the tree is empty
     if (root == NULL)
         return root;
 
-    // Find the node to be deleted
+    // Find the node to be deleted (normal deletion process)
     if (val < root->val)
         root->left = deleteNode(root->left, val);
     else if (val > root->val)
@@ -56,7 +56,7 @@ struct node *deleteNode(struct node *root, int val)
 
     else
     {
-        // If the node is with only one child or no child
+        // If node has one child or no child
         if (root->left == NULL)
         {
             struct node *temp = root->right;
@@ -72,36 +72,35 @@ struct node *deleteNode(struct node *root, int val)
 
         else
         {
-            // If the node has two children
+            // If the node has two children then do this
             struct node *temp = minNode(root->right);
 
-            // Place the inorder successor in position of the node to be deleted
+            // Put inorder successor in position of the node which is to be deleted
             root->val = temp->val;
 
-            // Delete the inorder successor
+            // Remove inorder successor
             root->right = deleteNode(root->right, temp->val);
         }
     }
     return root;
 }
 
-// Inorder Traversal
+// Inorder Traversal of BST
 void inorder(struct node *root)
 {
     if (root != NULL)
     {
-        // Traverse left
+        // For Traversing left
         inorder(root->left);
 
-        // Traverse root
+        // For printing the root
         printf("%d ", root->val);
 
-        // Traverse right
+        //For Traversing right
         inorder(root->right);
     }
 }
 
-// Driver code
 int main()
 {
     struct node *root = NULL;
