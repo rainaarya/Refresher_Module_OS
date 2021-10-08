@@ -47,6 +47,10 @@ The first subpart performs insertion and deletion in a BST. The second subpart i
 C file names: a3q3p1.c, a3q3p2.c
 Executable names: a3q3p1, a3q3p2
 
+To compile explicitly:
+use 'gcc a3q3p1.c -o a3q3p1' and run using ./a3q3p1
+use 'gcc a3q3p2.c -o a3q3p2' and run using ./a3q3p2
+
 To test the programs: To test part 1, run a3q3p1 and enter your choice for performing insertion/deletion/display. For insertion, 
 enter the value you want to insert in BST. For deletion, enter the value you want to delete from BST. Display shows the
 current state of BST by printing the inorder traversal of the BST.
@@ -58,6 +62,8 @@ current state of Height Balanced BST by printing the preorder traversal of the B
 
 This question has no Subparts.
 The C file name for the same is 'a3q4.c' and the executable file name is 'a3q4'
+
+To compile explicitly use 'gcc a3q4.c -o a3q4' and run using ./a3q4
 
 The program asks the user which sort function is to be performed and sorts the array inputted by the user using the
 specified sorting function.

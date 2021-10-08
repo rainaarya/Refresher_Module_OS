@@ -20,6 +20,8 @@ To clean/delete all generated executables, type 'make clean' in the terminal.
 This question has no Subparts. The program takes input via command line arguments.
 The C file name for the same is 'a1q1.c' and the executable file name is 'a1q1'
 
+To compile explicitly use 'gcc a1q1.c -o a1q1' and run using ./a1q1
+
 To test the program: The program takes command line arguments as source and destination filenames and copies the source to the destination using 
 fread() and fwrite(). Run the program, with source and destination filenames as arguments. After executition, the copied file is then generated in the folder.
 For example, './a1q1 hello.bin bye.bin' will copy the contents of file hello.bin (if it exists) to bye.bin. If source file
@@ -27,12 +29,14 @@ does not exist, error is printed.
 
 ---------DETAILS FOR QUESTION 2--------
 
-???
+NOT DONE....
 
 ---------DETAILS FOR QUESTION 3--------
 
 This question has no Subparts.
 The C file name for the same is 'a1q3.c' and the executable file name is 'a1q3'
+
+To compile explicitly use 'gcc a1q3.c -o a1q3' and run using ./a1q3
 
 The program asks the user for two variables and swaps them. It then asks the user for two arrays and swaps them.
 
@@ -45,6 +49,8 @@ followed by elements of 1st and 2nd array. After that, the array values before a
 This question has no Subparts. It reverses a string.
 The C file name for the same is 'a1q4.c' and the executable file name is 'a1q4'
 
+To compile explicitly use 'gcc a1q4.c -o a1q4' and run using ./a1q4
+
 To test the program: Run a1q4 and enter any string to be reversed (max 100 chars). The output is the string before and after reversal.
 
 
@@ -52,6 +58,8 @@ To test the program: Run a1q4 and enter any string to be reversed (max 100 chars
 
 This question has no Subparts. The program sorts the array and then it performs Binary Search.
 The C file name for the same is 'a1q5.c' and the executable file name is 'a1q5'
+
+To compile explicitly use 'gcc a1q5.c -o a1q5' and run using ./a1q5
 
 To test the program: Run a1q5 and enter the size of array, followed by the array elements. Since the question
 says to assume 4294967290, 4294967295, 10400 are part of the array, the input entered should contain these values too.

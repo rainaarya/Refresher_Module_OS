@@ -21,6 +21,8 @@ To clean/delete all generated executables, type 'make clean' in the terminal.
 This question has 2 Subparts. I have combined the functionality of both subparts into a single C program.
 The C file name for the same is 'a2q1.c' and the executable file name is 'a2q1'
 
+To compile explicitly use 'gcc a2q1.c -o a2q1' and run using ./a2q1
+
 The program first generates the matrix using the appropriate functions (subpart 1). Then it asks the user 
 about the row number where he/she wants the column size to change and asks for the new column size (subpart 2).
 
@@ -34,6 +36,12 @@ is the doubly linked list implementation. Third subpart is stack implementation 
 
 C file names: a2q2p1.c, a2q2p2.c, a2q2p3.c, a2q2p4.c
 Executable names: a2q2p1, a2q2p2, a2q2p3, a2q2p4
+
+To compile explicitly:
+use 'gcc a2q2p1.c -o a2q2p1' and run using ./a2q2p1
+use 'gcc a2q2p2.c -o a2q2p2' and run using ./a2q2p2
+use 'gcc a2q2p3.c -o a2q2p3' and run using ./a2q2p3
+use 'gcc a2q2p4.c -o a2q2p4' and run using ./a2q2p4
 
 To test the programs: Run a2q2p1 and enter the student details as promted. Continue doing it if you wish to add
 more nodes in the list. Once you are done filling, the contents in each node of linked list gets printed.
@@ -52,6 +60,8 @@ To repeat the menu after the operaton, enter 'y' else enter 'n' if you would lik
 This question has no Subparts.
 The C file name for the same is 'a2q3.c' and the executable file name is 'a2q3'
 
+To compile explicitly use 'gcc a2q3.c -o a2q3' and run using ./a2q3
+
 The program asks the user for the arguments and operaton and calls the appropriate function (whose location is stored in the pointer array).
 
 To test the program: Run a2q3 and enter the value of two arguments 'a' and 'b' when promted. After that,
@@ -65,6 +75,8 @@ CANCELLED
 
 This question has no Subparts.
 The C file name for the same is 'a2q5.c' and the executable file name is 'a2q5'
+
+To compile explicitly use 'gcc a2q5.c -o a2q5' and run using ./a2q5
 
 The program asks the user which sort function is to be performed and sorts the array inputted by the user using the
 specified sorting function.
